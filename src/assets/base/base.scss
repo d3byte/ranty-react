@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    font-family: 'ProximaNova-Regular';
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+p {
+    margin: 0;
+}
+
+@for $i from 1 through 6 {
+    h#{$i} {
+        font-family: 'ProximaNova-Bold';
+        margin: 0;
+    }
+}
+
+h1 {
+    font-size: 40px;
+}

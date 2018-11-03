@@ -1,0 +1,28 @@
+.first-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 97px;
+    height: calc(100vh - 97px);
+    background: url('../../../assets/city_bg.png') no-repeat;
+    background-position-y: -100px;
+    background-position-x: 50%;
+
+    * {
+        color: white;
+    }
+
+    h1 {
+        text-transform: lowercase;
+    }
+
+    @media (max-width: 768px) {
+        height: auto;
+
+        h1 {
+            font-size: 30px;
+        }
+    }
+
+
+}

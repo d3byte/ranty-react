@@ -1,0 +1,28 @@
+@import "../abstracts/colors.scss";
+
+.feature-container {
+    
+    &--border-bottom {
+        border-bottom: 6px solid $border-lightgray;
+    }
+
+    &--row-reverse {
+        flex-direction: row-reverse;
+    }
+
+    &--center-all {
+        justify-content: center;
+    }
+
+    &--vertical-center-all {
+        align-items: center;
+    }
+
+    &--vertical {
+        flex-direction: column;
+    }
+
+    @media (max-width: 940px) {
+        align-items: center;
+    }
+}

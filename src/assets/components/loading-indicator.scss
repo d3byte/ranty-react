@@ -1,0 +1,17 @@
+@import "../abstracts/animations.scss";
+
+.loading-indicator {
+    width: 16px;
+    height: 16px;
+    
+    @include keyframes(spin) {
+        0% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @include animation(spin 0.8s infinite);
+}

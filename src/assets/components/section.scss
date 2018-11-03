@@ -1,0 +1,28 @@
+.section {
+    padding: 100px 200px;
+
+    &--half-splitted {
+        display: flex;
+        justify-content: space-between;
+
+        &__item {
+            width: 45%;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        padding: 80px 120px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 60px 20px;
+
+        &--half-splitted {
+            flex-direction: column-reverse !important;
+
+            &__item {
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.list {
+    list-style: none;
+    margin: 0;
+    padding:0;
+
+    &__item {
+    }
+
+    &--horizontal {
+        display: flex;
+        align-items: center;
+    }
+}
