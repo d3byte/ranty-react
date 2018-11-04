@@ -33,6 +33,10 @@
 				font-family: 'ProximaNova-Bold', sans-serif;
 				letter-spacing: 2px;
 				height: 50px;
+
+				&:hover {
+					color: $black;
+				}
 			}
 
 			&--active, &:hover {

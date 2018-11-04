@@ -6,7 +6,7 @@ import { Layout } from '../../components';
 export default class Management extends Component {
   render() {
 	return (
-	  <Layout className="management">
+	  <Layout pageName="Управление" className="management">
 			
 	  </Layout>
 	)
