@@ -4,11 +4,12 @@ import './assets/style/style.scss';
 
 import { SideMenu } from '../';
 
+/* eslint-disable */
 import msg from './assets/img/msg.svg';
 import msgNew from './assets/img/msg--new.svg';
 import notif from './assets/img/notif.svg';
 import notifNew from './assets/img/notif--new.svg';
-
+/* eslint-enable */
 export default class Layout extends Component {
   render() {
 	return (
