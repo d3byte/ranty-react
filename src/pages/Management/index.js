@@ -5,10 +5,10 @@ import { Layout } from '../../components';
 
 export default class Management extends Component {
   render() {
-	return (
-	  <Layout pageName="Управление" className="management">
-			
-	  </Layout>
-	)
+		return (
+			<Layout pageName="Управление" className="management">
+				
+			</Layout>
+		)
   }
 }
