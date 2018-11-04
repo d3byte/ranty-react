@@ -1,3 +1,9 @@
+@import "../abstracts/colors.scss";
+
+body {
+    background: $gray--very-light;
+}
+
 * {
     box-sizing: border-box;
     font-family: 'ProximaNova-Regular';
