@@ -9,7 +9,8 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<Route path="/management" component={Management} />
+				{/* Change path to "/management" */}
+				<Route path="/" component={Management} />
 			</Router>
 		);
 	}
