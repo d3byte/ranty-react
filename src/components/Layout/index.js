@@ -13,7 +13,7 @@ import notifNew from './assets/img/notif--new.svg';
 export default class Layout extends Component {
   render() {
 	return (
-	  <section className={`desktop-layout ${this.props.className}`}>
+	  <section className="desktop-layout">
 			<SideMenu />
 			<main className="desktop-layout__content">
 				<header className="desktop-layout__content__header">
@@ -33,7 +33,9 @@ export default class Layout extends Component {
 						</Dropdown.Menu>
 					</Dropdown>
 				</header>
-				{this.props.children}
+				<div className={`desktop-layout__content__children ${this.props.className}`}>
+					{this.props.children}
+				</div>
 			</main>
 	  </section>
 	)
