@@ -1,3 +1,72 @@
+@import "../../../../assets/style/abstracts/colors.scss";
+
 .management {
-	
+	$padding-vertical: 15px;
+	$padding-horizontal: 30px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+	&__filters {
+		background: white;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		padding: $padding-vertical $padding-horizontal;
+
+		&__filter {
+			display: -ms-grid;
+			display: grid;
+
+			.field {
+				margin-bottom: 0 !important;
+			}
+
+			&__item {
+				&--one-line {
+					align-items: flex-end;
+					
+					& > .field {
+						width: 41%;
+					}
+
+					span {
+						margin: 0 5px;
+						margin-bottom: 10px;
+					}
+				}
+
+				&__tab .ui.menu {
+					box-shadow: none;
+					background: transparent;
+					border: none;
+					.item {
+						background: $gray--container-inactive;
+						transition: 0.2s background ease-in-out;
+						flex-grow: 1;
+						justify-content: center;
+						color: white;
+
+						&.active, &:hover {
+							color: white;
+							background: $black--block;
+						}
+
+
+						&:last-of-type {
+							border-top-right-radius: 4px;
+							border-bottom-right-radius: 4px;
+						}
+					}
+				}
+			}
+
+			&--double {
+				grid-template-columns: 30% calc(70% - 40px);
+				grid-column-gap: 40px;
+			}
+
+			&--triple {
+				grid-template-columns: 40% 20% 40%;
+				grid-column-gap: 20px;
+			}
+		}
+	}
 }
