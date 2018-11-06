@@ -69,4 +69,62 @@
 			}
 		}
 	}
+
+	&__table {
+		background: $gray--light;
+		margin-bottom: $padding-vertical;
+
+		.table {
+			background: transparent;
+			border-radius: 0;
+			box-shadow: none;
+			border: none;
+			
+			thead {
+				background: $gray--very-light;
+			}
+			tbody {
+				background: transparent;
+			}
+			tr {
+				td, th {
+					border: none;	
+				}
+
+				td:first-of-type, th:first-of-type {
+					padding-left: $padding-horizontal;
+				}
+				td:last-of-type, th:last-of-type {
+					padding-right: $padding-horizontal;
+				}
+			}
+		}
+
+		&__pages {
+			padding: ($padding-vertical * 2) $padding-horizontal;
+			display: flex;
+			justify-content: center;
+
+			.pagination {
+				box-shadow: none;
+				border: none;
+
+				.item {
+					background: $gray;
+
+					&.active, &:hover {
+						background: $orange !important;
+					}
+					
+					&.disabled {
+						background: $gray !important;
+
+						&:hover {
+							background: $gray !important;
+						}
+					}
+				}
+			}
+		}
+	}
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Form, Tab } from 'semantic-ui-react';
+import { Input, Form, Tab, Table, Pagination } from 'semantic-ui-react';
 import './assets/style/style.scss';
 
 import { Layout } from '../../components';
@@ -19,6 +19,19 @@ const TypePanes = [
 	{ menuItem: 'Офис', render: () => '' }
 ];
 
+const TableRows = [
+	{ unit: 'Москва, ул. Пролетарская 2', name: 'Название 1', area: 134, type: 'Офис', status: { vacant: true, tenant: '' }, price: 21000 },
+	{ unit: 'Ростов-на-Дону, бульвар Капуцинов 15, оф. 11', name: 'Название 2', area: 749, type: 'Торговая', status: { vacant: false, tenant: 'Крапивин В.А.' }, price: 97000 },
+	{ unit: 'Ростов-на-Дону, бульвар Капуцинов 15, оф. 7', name: 'Название 3', area: 585, type: 'Коммерческая', status: { vacant: true, tenant: '' }, price: 64000 },
+	{ unit: 'Москва, ул. Пролетарская 2', name: 'Название 4', area: 655, type: 'Офис', status: { vacant: true, tenant: '' }, price: 66000 },
+	{ unit: 'Москава, ул. Верхняя Мойва 48', name: 'Офис А-класса', area: 230, type: 'Офис', status: { vacant: false, tenant: 'Преображенская Н.Т.' }, price: 97000 },
+	{ unit: 'Ростов-на-Дону, бульвар Капуцинов 15, оф. 6', name: 'Позитив Поинт', area: 827, type: 'Коммерческая', status: { vacant: false, tenant: 'Долгинова Е.И.' }, price: 48000 },
+	{ unit: 'Ростов-на-Дону, бульвар Капуцинов 15, оф. 4', name: 'Негатив Поинт', area: 340, type: 'Коммерческая', status: { vacant: false, tenant: 'Кондратенко А.В.' }, price: 59000 },
+	{ unit: 'Ростов-на-Дону, бульвар Капуцинов 15, оф. 3', name: 'Еще Какой-то Поинт', area: 192, type: 'Офис', status: { vacant: true, tenant: '' }, price: 21000 },
+	{ unit: 'Москва, ул. Верхняя Мойва 48', name: 'ТЦ Атриум', area: 860, type: 'Офис', status: { vacant: false, tenant: 'Крапивин В.А.' }, price: 97000 },
+	{ unit: 'Москва, ул. Пролетарская 2', name: 'Парк Горького', area: 371, type: 'Офис', status: { vacant: true, tenant: '' }, price: 21000 },
+];
+
 export default class Management extends Component {
 	state = {
 		filter: {
@@ -30,6 +43,10 @@ export default class Management extends Component {
 	onFilterChange = (e, data, field) => {
 		// Do something
 		console.log(data, field);
+	}
+
+	onPaginationChange = (data) => {
+
 	}
 
 	render() {
@@ -66,6 +83,58 @@ export default class Management extends Component {
 						</Form.Field>
 					</Form>
 				</header>
+				<main className="management__table">
+					<Table unstackable>
+						<Table.Header>
+							<Table.Row>
+								<Table.HeaderCell>Объект</Table.HeaderCell>
+								<Table.HeaderCell>Название</Table.HeaderCell>
+								<Table.HeaderCell>Площадь, м<sup>2</sup></Table.HeaderCell>
+								<Table.HeaderCell>Тип</Table.HeaderCell>
+								<Table.HeaderCell>Статус</Table.HeaderCell>
+								<Table.HeaderCell>Цена, ₽</Table.HeaderCell>
+							</Table.Row>
+						</Table.Header>
+						<Table.Body>
+							{
+								TableRows.map((item, index) => (
+									<Table.Row key={index}>
+										<Table.Cell>{item.unit}</Table.Cell>
+										<Table.Cell>{item.name}</Table.Cell>
+										<Table.Cell>{item.area}</Table.Cell>
+										<Table.Cell>{item.type}</Table.Cell>
+										<Table.Cell>
+											{
+												item.status.vacant 
+													? (
+														<>
+															<div className="circle"></div>
+															Вакантно
+														</>
+													) : (
+														<>
+															<div className="circle--empty"></div>
+															{item.status.tenant}
+														</>
+													)
+											}
+										</Table.Cell>
+										<Table.Cell>{item.price}</Table.Cell>
+									</Table.Row>
+								))
+							}
+						</Table.Body>
+					</Table>
+					<footer className="management__table__pages">
+						<Pagination
+							defaultActivePage={5}
+							totalPages={11}
+							firstItem={null}
+            				lastItem={null}
+							onPageChange={this.onPaginationChange}
+						/>
+					</footer>
+				</main>
 			</Layout>
 		)
 	}
