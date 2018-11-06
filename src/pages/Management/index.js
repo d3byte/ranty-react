@@ -107,15 +107,15 @@ export default class Management extends Component {
 											{
 												item.status.vacant 
 													? (
-														<>
+														<div className="row">
 															<div className="circle"></div>
 															Вакантно
-														</>
+														</div>
 													) : (
-														<>
-															<div className="circle--empty"></div>
+														<div className="row">
+															<div className="circle circle--empty"></div>
 															{item.status.tenant}
-														</>
+														</div>
 													)
 											}
 										</Table.Cell>

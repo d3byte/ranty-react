@@ -98,6 +98,15 @@
 					padding-right: $padding-horizontal;
 				}
 			}
+
+			.circle {
+				margin-right: 10px;
+			}
+
+			.row {
+				display: flex;
+				align-items: center;
+			}
 		}
 
 		&__pages {
@@ -126,5 +135,18 @@
 				}
 			}
 		}
+	}
+}
+
+.circle {
+	width: 10px;
+	height: 10px;
+	background: #4CD964;
+	border-radius: 50%;
+	border: 1px solid transparent;
+
+	&--empty {
+		background: transparent;
+		border-color: #4CD964;
 	}
 }
