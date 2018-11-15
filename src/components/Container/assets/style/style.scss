@@ -1,0 +1,25 @@
+@import "../../../../assets/style/abstracts/colors.scss";
+
+.container {
+	$padding-vertical: 30px;
+	$padding-horizontal: 30px;
+	padding: $padding-vertical $padding-horizontal;
+	border-radius: 4px;
+
+	&__title {
+		text-align: center;
+		font-family: 'ProximaNova-Regular', sans-serif;
+		font-size: 16px;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		margin-bottom: $padding-vertical;
+	}
+
+	&--centered {
+		margin: 0 auto;
+	}
+
+	&--dark {
+		background: $gray--light;
+	}
+}
