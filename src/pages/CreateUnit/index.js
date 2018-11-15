@@ -17,7 +17,7 @@ const roomDefault = {
 	area: 0
 }
 
-export default class Management extends Component {
+export default class CreateUnit extends Component {
 	state = {
 		unit: '',
 		rooms: [roomDefault]

@@ -4,20 +4,7 @@ import './assets/style/style.scss';
 
 import { Layout, Container } from '../../components';
 
-const roomTypes = [
-	{ key: 1, text: 'Офис', value: 'office' },
-	{ key: 2, text: 'Торговая', value: 'trade' },
-	{ key: 3, text: 'Коммерческая', value: 'commercial' },
-];
-
-const roomDefault = {
-	name: '',
-	type: '',
-	rent: 0,
-	area: 0
-}
-
-export default class Management extends Component {
+export default class AddLead extends Component {
 	state = {
 		name: '',
 		phone: '',
@@ -57,15 +44,15 @@ export default class Management extends Component {
 						</Form.Field>
 						<Form.Group inline>
 							<Form.Field>
-								<Dropdown fluid placeholder='Выбрать помещение' search selection options={roomTypes} onChange={(e, { value }) => this.changeState('type', value)} />
+								<Dropdown fluid placeholder='Выбрать помещение' search selection options={[]} onChange={(e, { value }) => this.changeState('type', value)} />
 							</Form.Field>
 							<Form.Field>
-								<Dropdown fluid placeholder='Выбрать дату' search selection options={roomTypes} onChange={(e, { value }) => this.setRoomProperty('type', value)} />
+								<Dropdown fluid placeholder='Выбрать дату' search selection options={[]} onChange={(e, { value }) => this.setRoomProperty('type', value)} />
 							</Form.Field>
 						</Form.Group>
 						<Form.Group inline className="right">
 							<Form.Field>
-								<Dropdown fluid placeholder='Выбрать время' search selection options={roomTypes} onChange={(e, { value }) => this.setRoomProperty('type', value)} />
+								<Dropdown fluid placeholder='Выбрать время' search selection options={[]} onChange={(e, { value }) => this.setRoomProperty('type', value)} />
 							</Form.Field>
 						</Form.Group>
 						<Form.Group inline className="right">

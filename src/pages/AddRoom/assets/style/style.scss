@@ -1,6 +1,6 @@
 @import "../../../../assets/style/abstracts/colors.scss";
 
-.create-unit {
+.add-room {
 	$padding-vertical: 15px;
 	$padding-horizontal: 30px;
 
@@ -18,6 +18,12 @@
 		&--orange {
 			background: $orange !important;
 			color: white !important;
+		}
+	}
+
+	&__dropdown {
+		.dropdown {
+			background: white;
 		}
 	}
 

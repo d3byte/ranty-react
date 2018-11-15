@@ -4,6 +4,11 @@ import './assets/style/style.scss';
 
 import { Layout, Container } from '../../components';
 
+const units = [
+	{ key: 1, text: 'Днепр', value: 'office' },
+	{ key: 2, text: 'Донецк', value: 'trade' },
+];
+
 const roomTypes = [
 	{ key: 1, text: 'Офис', value: 'office' },
 	{ key: 2, text: 'Торговая', value: 'trade' },
@@ -17,9 +22,9 @@ const roomDefault = {
 	area: 0
 }
 
-export default class Management extends Component {
+export default class AddRoom extends Component {
 	state = {
-		unit: '',
+		unit: {},
 		rooms: [roomDefault]
 	}
 
@@ -38,7 +43,7 @@ export default class Management extends Component {
 		this.setState({ rooms });
 	}
 
-	changeUnitName = e => this.setState({ unit: e.target.value });
+	selectUnit = (e, { value }) => this.setState({ unit: value });
 
 	submit = () => {
 		const { unit, rooms } = this.state;
@@ -48,16 +53,16 @@ export default class Management extends Component {
 		const { rooms } = this.state;
 		return (
 			<Layout
-				pageName="Создание объекта"
-				className="create-unit"
+				pageName="Новое помещение"
+				className="add-room"
 				names={this.props.names}
 				pathname={this.props.location.pathname}
 				history={this.props.history}
 			>
 				<Container title="Создание объекта" centered dark>
 					<Form>
-						<Form.Field>
-							<Input placeholder="Название объекта" onChange={this.changeUnitName} />
+						<Form.Field className="add-room__dropdown">
+							<Dropdown fluid placeholder='Выбрать объект' search selection options={units} onChange={this.changeUnitName} />
 						</Form.Field>
 						{
 							rooms.map((room, index) => (
