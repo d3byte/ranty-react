@@ -59,7 +59,7 @@ export default class AddRoom extends Component {
 				pathname={this.props.location.pathname}
 				history={this.props.history}
 			>
-				<Container title="Создание объекта" centered dark>
+				<Container title="Добавление помещения" centered dark>
 					<Form>
 						<Form.Field className="add-room__dropdown">
 							<Dropdown fluid placeholder='Выбрать объект' search selection options={units} onChange={this.changeUnitName} />
