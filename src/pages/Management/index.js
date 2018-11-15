@@ -51,7 +51,13 @@ export default class Management extends Component {
 
 	render() {
 		return (
-			<Layout pageName="Управление" className="management">
+			<Layout
+				pageName="Управление"
+				className="management"
+				names={this.props.names}
+				pathname={this.props.location.pathname}
+				history={this.props.history}
+			>
 				<header className="management__filters">
 					<Form className="management__filters__filter management__filters__filter--triple">
 						<Form.Field 

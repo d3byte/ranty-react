@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Dropdown } from 'semantic-ui-react';
 import './assets/style/style.scss';
 
-import { SideMenu } from '../';
+import { SideMenu, Breadcrumbs } from '../';
 
 /* eslint-disable */
 import msg from './assets/img/msg.svg';
@@ -33,6 +33,11 @@ export default class Layout extends Component {
 						</Dropdown.Menu>
 					</Dropdown>
 				</header>
+				{/* <Breadcrumbs
+					names={this.props.names}
+					pathname={this.props.pathname}
+					history={this.props.history}
+				/> */}
 				<div className={`desktop-layout__content__children ${this.props.className}`}>
 					{this.props.children}
 				</div>
