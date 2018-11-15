@@ -9,8 +9,18 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				{/* Change path to "/management" */}
-				<Route path="/" component={Management} />
+				<>
+					{/* Change path to "/management" */}
+					<Route path="/" exact render={props => (
+						<Management {...props} names={['Управление']} />
+					)} />
+					<Route path="/management" exact render={props => (
+						<Management {...props} names={['Управление']} />
+					)} />
+					<Route path="/management/create-unit" render={props => (
+						<Management {...props} names={['Управление', 'Создать объект']} />
+					)} />
+				</>
 			</Router>
 		);
 	}
