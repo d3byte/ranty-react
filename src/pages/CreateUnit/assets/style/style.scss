@@ -1,0 +1,66 @@
+@import "../../../../assets/style/abstracts/colors.scss";
+
+.create-unit {
+	$padding-vertical: 15px;
+	$padding-horizontal: 30px;
+
+	&__button {
+
+		&--px240 {
+			max-width: 240px !important;
+		}
+
+		&--centered {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+
+		&--orange {
+			background: $orange !important;
+			color: white !important;
+		}
+	}
+
+	.container {
+		text-align: center;
+		max-width: 600px;
+	}
+
+	.form {
+		& > .field {
+			padding-right: 0 !important;
+		}
+
+		& > .fields {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+			flex-direction: column !important;
+			background: white;
+			padding: 15px;
+			border-radius: 4px;
+			& > .fields {
+				width: 100%;
+
+				.field {
+					width: 100%;
+					padding-left: 0 !important;
+					padding-right: 0.5em !important;
+
+					&:last-child {
+						padding-right: 0 !important;
+					}
+
+					.input {
+						width: 100% !important;
+					}
+				}
+			}
+
+			.create-unit__button {
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+		}
+	}
+	
+}

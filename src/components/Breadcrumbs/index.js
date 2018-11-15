@@ -9,7 +9,7 @@ export default class Breadcrumbs extends Component {
 	}
 
 	handleBreadcrumbs = () => {
-		const { pathname, history, names } = this.props;
+		const { pathname, names } = this.props;
 		const splittedPathname = pathname.split('/').slice(1);
 		const breadcrumbs = splittedPathname.map((item, index) => {
 			return {

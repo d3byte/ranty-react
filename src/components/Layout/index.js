@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Dropdown } from 'semantic-ui-react';
 import './assets/style/style.scss';
 
-import { SideMenu, Breadcrumbs } from '../';
+import { SideMenu } from '../';
 
 /* eslint-disable */
 import msg from './assets/img/msg.svg';
