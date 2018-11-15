@@ -1,0 +1,68 @@
+@import "../../../../assets/style/abstracts/colors.scss";
+
+.create-lead {
+	$padding-vertical: 15px;
+	$padding-horizontal: 30px;
+
+	&__button {
+
+		&--px240 {
+			max-width: 240px !important;
+		}
+
+		&--centered {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+
+		&--orange {
+			background: $orange !important;
+			color: white !important;
+		}
+	}
+
+	.container {
+		text-align: center;
+		max-width: 600px;
+	}
+
+	.form {
+		& > .field {
+			padding-right: 0 !important;
+		}
+
+		& > .fields {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+			border-radius: 4px;
+			justify-content: space-between !important;
+			.field {
+				width: 48%;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+
+				.input {
+					width: 100% !important;
+				}
+			}
+
+			.create-unit__button {
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+
+			&.right {
+				justify-content: flex-end !important;
+				& > * {
+					width: 48% !important;
+				}
+
+				.checkbox {
+					width: 100%;
+					text-align: left;
+				}
+			}
+		}
+	}
+	
+}
