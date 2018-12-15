@@ -72,6 +72,7 @@
 						display: flex;
 						align-items: center;
 						height: 40px;
+						margin-left: 20px;
 						.row {
 							display: flex;
 							align-items: center;
@@ -85,10 +86,6 @@
 						}
 					}
 				}
-			}
-
-			&__action {
-				// Наверное, здесь нужно будет вставить стили
 			}
 		}
 
