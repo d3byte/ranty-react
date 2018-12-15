@@ -14,7 +14,7 @@ export default class Breadcrumbs extends Component {
 		const breadcrumbs = splittedPathname.map((item, index) => {
 			return {
 				name: names[index],
-				pathname: splittedPathname.slice(0, index + 1).join('/')
+				pathname: `/${splittedPathname.slice(0, index + 1).join('/')}`
 			}
 		});
 		this.setState({ breadcrumbs });
@@ -31,7 +31,7 @@ export default class Breadcrumbs extends Component {
 				{
 					breadcrumbs.map((item, index) => (
 						<span key={index}>
-							<Breadcrumb.Section>
+							<Breadcrumb.Section link>
 								<Link to={item.pathname}>{item.name}</Link>
 							</Breadcrumb.Section>
 							{
