@@ -1,70 +1,12 @@
 @import "../../../../assets/style/abstracts/colors.scss";
 
-.desktop-layout {
-	$padding-vertical: 15px;
-	$padding-horizontal: 30px;
-	display: flex;
-	max-width: 100%;
-	max-height: 100vh;
-	overflow-y: hidden;
+.breadcrumb {
+	a {
+		color: rgb(195, 195, 195) !important;
 
-	&__content {
-		flex-grow: 1;
-		padding: $padding-vertical $padding-horizontal;
-		overflow-x: hidden;
-		overflow-y: scroll;
-
-		&__header {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			$space: 20px;
-			margin-bottom: $space;
-
-			&__info {
-				display: flex;
-				align-items: center;
-
-				& > * {
-					margin-right: $space;
-
-					&:last-child {
-						margin-right: 0;
-					}
-				}
-				
-				&__title {
-					margin-bottom: 0;
-				}
-
-				&__icon {
-					cursor: pointer;
-				}
-
-				&__page-name {
-					position: relative;
-					padding-left: $space;
-					line-height: 40px;
-					vertical-align: middle;
-					color: $gray--text-inactive;
-					font-family: 'ProximaNova-Semibold';
-					font-size: 12px;
-
-					&:before {
-						position: absolute;
-						left: 1px;
-						top: 0px;
-						width: 1px;
-						height: 100%;
-						content: '';
-						background: $gray--container-inactive;
-					}
-				}
-			}
-
-			&__action {
-				// Наверное, здесь нужно будет вставить стили
-			}
+		&.active a {
+			color: rgb(147, 147, 157) !important;
+			font-weight: normal !important;
 		}
 	}
 }

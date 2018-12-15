@@ -31,7 +31,7 @@ export default class Breadcrumbs extends Component {
 				{
 					breadcrumbs.map((item, index) => (
 						<span key={index}>
-							<Breadcrumb.Section link>
+							<Breadcrumb.Section link active={item.pathname === window.location.pathname}>
 								<Link to={item.pathname}>{item.name}</Link>
 							</Breadcrumb.Section>
 							{

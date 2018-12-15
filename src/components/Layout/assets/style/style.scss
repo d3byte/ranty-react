@@ -10,14 +10,23 @@
 
 	&__content {
 		flex-grow: 1;
-		padding: $padding-vertical $padding-horizontal;
 		overflow-x: hidden;
 		overflow-y: scroll;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+
+		.breadcrumb {
+			padding: $padding-vertical $padding-horizontal;
+			background: rgb(236, 236, 236);
+			margin-bottom: 30px;
+			width: 100%;
+		}
 
 		&__header {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			padding: 0 $padding-horizontal;
 			$space: 20px;
 			margin-bottom: $space;
 
@@ -82,6 +91,10 @@
 			&__action {
 				// Наверное, здесь нужно будет вставить стили
 			}
+		}
+
+		&__children {
+			padding: 0 $padding-horizontal;
 		}
 	}
 }
