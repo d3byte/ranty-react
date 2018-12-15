@@ -9,6 +9,8 @@ import msg from './assets/img/msg.svg';
 import msgNew from './assets/img/msg--new.svg';
 import notif from './assets/img/notif.svg';
 import notifNew from './assets/img/notif--new.svg';
+import settings from './assets/img/settings.svg';
+import logout from './assets/img/logout.svg';
 /* eslint-enable */
 export default class Layout extends Component {
 	navTo = pathname => {
@@ -38,6 +40,12 @@ export default class Layout extends Component {
 								<Dropdown.Item onClick={e => this.navTo('/management/add-lead')} icon="user" text="Лид" />
 							</Dropdown.Menu>
 						</Dropdown>
+						<div className="desktop-layout__content__header__info__page-name desktop-layout__content__header__info__page-name--row">
+							<div className="row">
+								<img src={settings} className="desktop-layout__content__header__info__icon" alt="settings" />
+								<img src={logout} className="desktop-layout__content__header__info__icon" alt="logout" />
+							</div>
+						</div>
 					</header>
 					{/* <Breadcrumbs
 						names={this.props.names}

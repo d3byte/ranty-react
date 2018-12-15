@@ -59,6 +59,23 @@
 						content: '';
 						background: $gray--container-inactive;
 					}
+
+					&--row {
+						display: flex;
+						align-items: center;
+						height: 40px;
+						.row {
+							display: flex;
+							align-items: center;
+
+							img {
+								margin-right: 20px;
+								&:last-of-type {
+									margin-right: 0;
+								}
+							}
+						}
+					}
 				}
 			}
 
