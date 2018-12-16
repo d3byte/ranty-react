@@ -58,6 +58,27 @@
 			color: #999999;
 		}
 	}
+
+	&__button {
+
+		&--px240 {
+			max-width: 240px !important;
+		}
+
+		&--centered {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+
+		&--orange {
+			background: $orange !important;
+			color: white !important;
+		}
+
+		&--fluid {
+			width: 100%;
+		}
+	}
 }
 
 .row {
@@ -74,7 +95,6 @@
 	&--align-center {
 		align-items: center;
 	}
-
 }
 
 .hover {
@@ -83,4 +103,20 @@
 
 .flat-container {
 	margin-bottom: 30px;
+}
+
+.modals {
+	.modal .container {
+		display: flex;
+		flex-direction: column;
+		& > * {
+			margin-bottom: 20px !important;
+			&:last-child {
+				margin-bottom: 0 !important;
+			}
+		}
+		.ui.input {
+			display: flex !important; 
+		}
+	}
 }

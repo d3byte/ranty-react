@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Progress } from 'semantic-ui-react';
+import { Progress, Button, Modal, Form, Input, Icon, Dropdown } from 'semantic-ui-react';
 import './assets/style/style.scss';
 
 import { Layout, Container } from '../../components';
@@ -8,6 +8,16 @@ import attachment from './assets/img/attachment.svg';
 
 export default class Unit extends Component {
 	state = {
+		isModalOpen: false,
+		name: ''
+	}
+
+	closeModal = () => {
+		this.setState({ isModalOpen: false });
+	}
+
+	openModal = () => {
+		this.setState({ isModalOpen: true });
 	}
 
 	render() {
@@ -80,13 +90,22 @@ export default class Unit extends Component {
 					<footer className="unit__status__footer">
 						<div className="row row--justify-space-between">
 							<p className="unit__text">3 вложения</p>
-							<p className="unit__text row--inline row--align-center hover">
+							<p onClick={this.openModal} className="unit__text row--inline row--align-center hover">
 								Загрузить вложение 
 								<img src={attachment} alt="attachment" />
 							</p>
 						</div>
 						<p className="unit__text unit__text--lighten">Договор А1</p>
 					</footer>
+					<Modal size="mini" open={this.state.isModalOpen} onClose={this.closeModal}>
+						<Container dark title="Добавление вложения">
+							<Dropdown fluid placeholder='Договор аренды' selection options={[]} />
+							<Input placeholder="Название договора" onChange={e => this.setState({ name: e.target.value })} />
+							<Button onClick={this.submit} className="unit__button unit__button--orange unit__button--centered">
+								Создать
+							</Button>
+						</Container>
+					</Modal>
 				</main>
 				<aside></aside>
 			</Layout>
