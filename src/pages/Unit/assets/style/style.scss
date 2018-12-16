@@ -3,9 +3,44 @@
 .unit {
 	$padding-vertical: 15px;
 	$padding-horizontal: 30px;
-	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-	display: flex;
-	justify-content: space-between;
+
+	.tabular.menu {
+		border-bottom: none !important;
+		
+		.item {
+			border: none !important;
+			background: rgb(236, 236, 236)
+		}
+	}
+	
+	.my-table {
+		width: 100%;
+		position: relative;
+		background: rgb(246, 246, 246);
+		box-sizing: border-box;
+		border-radius: 4px;
+		padding: 10px;
+		&__row {
+			display: flex;
+			align-items: center;
+
+			p {
+				width: 25%;
+
+				&:last-of-type {
+					text-align: right;
+					text-decoration: underline;
+					color: $gray--text-caption;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
 
 	&__status {
 		$padding-vertical: 20px;
@@ -15,6 +50,15 @@
 		border-radius: 4px;
 		flex-grow: 1;
 		margin-bottom: 60px;
+
+		.ui.table {
+			border: none !important;
+
+			thead tr th {
+				border-bottom: none !important;
+				background: rgb(246, 246, 246) !important;
+			}
+		}
 
 		.progress {
 			.bar {

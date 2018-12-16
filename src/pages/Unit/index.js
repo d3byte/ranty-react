@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
-import { Progress, Button, Modal, Form, Input, Icon, Dropdown } from 'semantic-ui-react';
+import { Progress, Button, Modal, Input, Icon, Dropdown, Tab, Table} from 'semantic-ui-react';
 import './assets/style/style.scss';
 
 import { Layout, Container } from '../../components';
 
 import attachment from './assets/img/attachment.svg';
 
+const panes = [
+	{ menuItem: 'Помещение' },
+	{ menuItem: 'Лиды' },
+  ]
+
 export default class Unit extends Component {
 	state = {
 		isModalOpen: false,
-		name: ''
+		name: '',
+		activePane: 0
 	}
 
 	closeModal = () => {
@@ -20,6 +26,19 @@ export default class Unit extends Component {
 		this.setState({ isModalOpen: true });
 	}
 
+	onTabChange = (e, data) => {
+		this.setState({ activePane: data.activeIndex });
+	}
+
+	collapse = id => {
+		const { isCollapsed } = this.state;
+		if (isCollapsed === id) {
+			this.setState({ isCollapsed: null });
+			return;
+		}
+		this.setState({ isCollapsed: id });
+	}
+
 	render() {
 		return (
 			<Layout
@@ -28,103 +47,243 @@ export default class Unit extends Component {
 				pathname={this.props.location.pathname}
 				history={this.props.history}
 			>
-				<main className="unit__status">
-					<header className="unit__status__header"> 
-						<h3 className="unit__status__header__title">OOO "Икар Девелопмент"</h3>
-						<div className="row row--justify-space-between">
-							<p className="unit__text unit__text--lighten">24 августа 2018 – 24 августа 2019</p>
-							<p className="unit__text hover">Перезаключить договор</p>
-						</div>
-						<Progress percent={60} />
-					</header>
-					<div className="unit__status__main">
-						<div className="flat-container unit__status__main__contacts">
-							<h2 className="flat-container__title">Контакты</h2>
-							<div className="row row--half-splitted">
-								<p className="unit__text unit__text--lighten">
-									Имя
-								</p>
-								<p className="unit__text">
-									Иван Тихонов
-								</p>
-							</div>
-							<div className="row row--half-splitted">
-								<p className="unit__text unit__text--lighten">
-									Телефон
-								</p>
-								<p className="unit__text">
-									+7 965 248-50-48
-								</p>
-							</div>
-							<div className="row row--half-splitted">
-								<p className="unit__text unit__text--lighten">
-									Email
-								</p>
-								<p className="unit__text">
-									ivan@mail.com
-								</p>
-							</div>
-						</div>
-						<div className="flat-container">
-							<h2 className="flat-container__title">Коммерческие условия</h2>
-							<div className="row row--justify-space-between">
-								<div className="unit__status__main__condition">
-									<p className="unit__text">
-										Оплата арендной платы
-									</p>
-									<p className="unit__text">
-										Не позднее 5-го числа месяца
-									</p>
+				<Tab onTabChange={this.onTabChange} panes={panes} />
+				<div className="wrapper">
+					<main className="unit__status">
+						{this.state.activePane === 0 ? (
+							<React.Fragment>
+								<header className="unit__status__header"> 
+									<h3 className="unit__status__header__title">OOO "Икар Девелопмент"</h3>
+									<div className="row row--justify-space-between">
+										<p className="unit__text unit__text--lighten">24 августа 2018 – 24 августа 2019</p>
+										<p className="unit__text hover">Перезаключить договор</p>
+									</div>
+									<Progress percent={60} />
+								</header>
+								<div className="unit__status__main">
+									<div className="flat-container unit__status__main__contacts">
+										<h2 className="flat-container__title">Контакты</h2>
+										<div className="row row--half-splitted">
+											<p className="unit__text unit__text--lighten">
+												Имя
+											</p>
+											<p className="unit__text">
+												Иван Тихонов
+											</p>
+										</div>
+										<div className="row row--half-splitted">
+											<p className="unit__text unit__text--lighten">
+												Телефон
+											</p>
+											<p className="unit__text">
+												+7 965 248-50-48
+											</p>
+										</div>
+										<div className="row row--half-splitted">
+											<p className="unit__text unit__text--lighten">
+												Email
+											</p>
+											<p className="unit__text">
+												ivan@mail.com
+											</p>
+										</div>
+									</div>
+									<div className="flat-container">
+										<h2 className="flat-container__title">Коммерческие условия</h2>
+										<div className="row row--justify-space-between">
+											<div className="unit__status__main__condition">
+												<p className="unit__text">
+													Оплата арендной платы
+												</p>
+												<p className="unit__text">
+													Не позднее 5-го числа месяца
+												</p>
+											</div>
+											<div className="unit__status__main__condition">
+												<p className="unit__text">
+													Оплата переменных платежей
+												</p>
+												<p className="unit__text">
+													Не позднее 3 дней с выставления счета
+												</p>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div className="unit__status__main__condition">
-									<p className="unit__text">
-										Оплата переменных платежей
-									</p>
-									<p className="unit__text">
-										Не позднее 3 дней с выставления счета
-									</p>
-								</div>
+								<footer className="unit__status__footer">
+									<div className="row row--justify-space-between">
+										<p className="unit__text">3 вложения</p>
+										<p onClick={this.openModal} className="unit__text row--inline row--align-center hover">
+											Загрузить вложение 
+											<img src={attachment} alt="attachment" />
+										</p>
+									</div>
+									<p className="unit__text unit__text--lighten">Договор А1</p>
+								</footer>
+								<Modal size="mini" open={this.state.isModalOpen} onClose={this.closeModal}>
+									<Container dark title="Добавление вложения">
+										<Dropdown fluid placeholder='Договор аренды' selection options={[]} />
+										<Input placeholder="Название договора" onChange={e => this.setState({ name: e.target.value })} />
+										<Button onClick={this.submit} className="unit__button unit__button--orange unit__button--centered">
+											Создать
+										</Button>
+									</Container>
+								</Modal>
+							</React.Fragment>
+						) : (
+							<Table padded>
+								<Table.Header>
+									<Table.Row>
+										<Table.HeaderCell>ФИО/ Название организации</Table.HeaderCell>
+										<Table.HeaderCell>Телефон</Table.HeaderCell>
+										<Table.HeaderCell>Email</Table.HeaderCell>
+										<Table.HeaderCell></Table.HeaderCell>
+									</Table.Row>
+								</Table.Header>
+								<Table.Body>
+									<Table.Row>
+										<Table.Cell>ООО Dtotyrb</Table.Cell>
+										<Table.Cell>+7 999 999 99 99</Table.Cell>
+										<Table.Cell>rantrant@gmail.com</Table.Cell>
+										<Table.Cell singleLine>
+											<span onClick={e => this.collapse(0)}>
+												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
+											</span>
+										</Table.Cell>
+									</Table.Row>
+									{
+										this.state.isCollapsed === 0 && (
+											<Table.Row>
+												<Table.Cell colspan="4">
+													<main className="my-table">
+														<h4>Отправленные коммерческие предложения</h4>
+														<div className="my-table__row">
+															<p>1. 10:00</p>
+															<p>2019-02-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 11:34</p>
+															<p>2019-08-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 10:30</p>
+															<p>2019-15-09</p>
+															<p>на рассмотрении</p>
+															<p>посмотреть</p>
+														</div>
+
+													</main>
+												</Table.Cell>
+											</Table.Row>
+										)
+									}
+									<Table.Row>
+										<Table.Cell>ООО Dtotyrb</Table.Cell>
+										<Table.Cell>+7 999 999 99 99</Table.Cell>
+										<Table.Cell>rantrant@gmail.com</Table.Cell>
+										<Table.Cell singleLine>
+											<span onClick={e => this.collapse(1)}>
+												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
+											</span>
+										</Table.Cell>
+									</Table.Row>
+									{
+										this.state.isCollapsed === 1 && (
+											<Table.Row>
+												<Table.Cell colspan="4">
+													<main className="my-table">
+														<h4>Отправленные коммерческие предложения</h4>
+														<div className="my-table__row">
+															<p>1. 10:00</p>
+															<p>2019-02-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 11:34</p>
+															<p>2019-08-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 10:30</p>
+															<p>2019-15-09</p>
+															<p>на рассмотрении</p>
+															<p>посмотреть</p>
+														</div>
+
+													</main>
+												</Table.Cell>
+											</Table.Row>
+										)
+									}
+									<Table.Row>
+										<Table.Cell>ООО Dtotyrb</Table.Cell>
+										<Table.Cell>+7 999 999 99 99</Table.Cell>
+										<Table.Cell>rantrant@gmail.com</Table.Cell>
+										<Table.Cell singleLine>
+											<span onClick={e => this.collapse(2)}>
+												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
+											</span>
+										</Table.Cell>
+									</Table.Row>
+									{
+										this.state.isCollapsed === 2 && (
+											<Table.Row>
+												<Table.Cell colspan="4">
+													<main className="my-table">
+														<h4>Отправленные коммерческие предложения</h4>
+														<div className="my-table__row">
+															<p>1. 10:00</p>
+															<p>2019-02-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 11:34</p>
+															<p>2019-08-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 10:30</p>
+															<p>2019-15-09</p>
+															<p>на рассмотрении</p>
+															<p>посмотреть</p>
+														</div>
+
+													</main>
+												</Table.Cell>
+											</Table.Row>
+										)
+									}
+								</Table.Body>
+							</Table>
+						)}
+					</main>
+					<aside className="unit__info">
+						<h2 className="unit__info__title">Прайм Эстейт</h2>
+						<p className="unit__info__address">Москва, ул. Пролетарская, 2</p>
+						<footer className="unit__info__properties">
+							<div className="unit__info__properties__item">
+								<p className="">Тип</p>
+								<p className="">Офис</p>
 							</div>
-						</div>
-					</div>
-					<footer className="unit__status__footer">
-						<div className="row row--justify-space-between">
-							<p className="unit__text">3 вложения</p>
-							<p onClick={this.openModal} className="unit__text row--inline row--align-center hover">
-								Загрузить вложение 
-								<img src={attachment} alt="attachment" />
-							</p>
-						</div>
-						<p className="unit__text unit__text--lighten">Договор А1</p>
-					</footer>
-					<Modal size="mini" open={this.state.isModalOpen} onClose={this.closeModal}>
-						<Container dark title="Добавление вложения">
-							<Dropdown fluid placeholder='Договор аренды' selection options={[]} />
-							<Input placeholder="Название договора" onChange={e => this.setState({ name: e.target.value })} />
-							<Button onClick={this.submit} className="unit__button unit__button--orange unit__button--centered">
-								Создать
-							</Button>
-						</Container>
-					</Modal>
-				</main>
-				<aside className="unit__info">
-					<h2 className="unit__info__title">Прайм Эстейт</h2>
-					<p className="unit__info__address">Москва, ул. Пролетарская, 2</p>
-					<footer className="unit__info__properties">
-						<div className="unit__info__properties__item">
-							<p className="">Тип</p>
-							<p className="">Офис</p>
-						</div>
-						<div className="unit__info__properties__item">
-							<p className="">Площадь</p>
-							<p className="">134 м2</p>
-						</div>
-						<div className="unit__info__properties__item">
-							<p className="">Этаж</p>
-							<p className="">5</p>
-						</div>
-					</footer>
-				</aside>
+							<div className="unit__info__properties__item">
+								<p className="">Площадь</p>
+								<p className="">134 м2</p>
+							</div>
+							<div className="unit__info__properties__item">
+								<p className="">Этаж</p>
+								<p className="">5</p>
+							</div>
+						</footer>
+					</aside>
+				</div>
 			</Layout>
 		)
 	}
