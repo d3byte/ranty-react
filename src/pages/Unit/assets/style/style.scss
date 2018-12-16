@@ -1,0 +1,86 @@
+@import "../../../../assets/style/abstracts/colors.scss";
+
+.unit {
+	$padding-vertical: 15px;
+	$padding-horizontal: 30px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: space-between;
+
+	&__status {
+		$padding-vertical: 20px;
+		$padding-horizontal: 20px;
+		padding: $padding-vertical $padding-horizontal;
+		background: white;
+		border-radius: 4px;
+		width: 60%;
+		margin-bottom: 60px;
+
+		.progress {
+			.bar {
+				background: rgb(99, 193, 0) !important;
+				height: 1em !important;
+			}
+		}
+
+		&__main {
+			&__contacts {
+				.row {
+					p.unit__text--lighten {
+						display: block;
+						width: 30%;
+					}
+
+					&:last-child {
+						p.unit__text--lighten {
+							margin-bottom: 0;
+						}
+					}
+				}
+			}
+
+			&__condition {
+				.unit__text {
+					margin: 0 !important;
+				}
+			}
+		}
+
+		&__footer {
+			img {
+				margin-left: 10px;
+			}
+		}
+	}
+
+	&__text {
+		&--lighten {
+			color: #999999;
+		}
+	}
+}
+
+.row {
+	display: flex;
+
+	&--inline {
+		display: inline-flex;
+	}
+
+	&--justify-space-between {
+		justify-content: space-between;
+	}
+
+	&--align-center {
+		align-items: center;
+	}
+
+}
+
+.hover {
+	cursor: pointer;
+}
+
+.flat-container {
+	margin-bottom: 30px;
+}
