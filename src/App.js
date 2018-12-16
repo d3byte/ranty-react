@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './assets/style/main.scss';
 import 'semantic-ui-css/semantic.min.css';
 
-import { Management, CreateUnit, AddLead, AddRoom, Unit } from './pages';
+import { Management, CreateUnit, AddLead, AddRoom, Unit, Edit } from './pages';
 
 class App extends Component {
 	render() {
@@ -28,6 +28,9 @@ class App extends Component {
 					)} />
 					<Route path="/management/unit" render={props => (
 						<Unit {...props} names={['Управление', 'Объект']} />
+					)} />
+					<Route path="/management/edit" render={props => (
+						<Edit {...props} names={['Управление', 'Редактировать']} />
 					)} />
 				</>
 			</Router>

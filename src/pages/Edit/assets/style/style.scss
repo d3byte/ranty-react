@@ -1,0 +1,249 @@
+@import "../../../../assets/style/abstracts/colors.scss";
+
+.edit {
+	$padding-vertical: 15px;
+	$padding-horizontal: 30px;
+
+	.tabular.menu {
+		border-bottom: none !important;
+		
+		.item {
+			border: none !important;
+			background: rgb(236, 236, 236)
+		}
+	}
+	
+	.my-table {
+		width: 100%;
+		position: relative;
+		background: rgb(246, 246, 246);
+		box-sizing: border-box;
+		border-radius: 4px;
+		padding: 10px;
+		&__row {
+			display: flex;
+			align-items: center;
+
+			p {
+				width: 25%;
+
+				&:last-of-type {
+					text-align: right;
+					text-decoration: underline;
+					color: $gray--text-caption;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__form {
+		$padding-vertical: 20px;
+		$padding-horizontal: 20px;
+		padding: $padding-vertical 0;
+		background: white;
+		border-radius: 4px;
+		flex-grow: 1;
+		margin-bottom: 60px;
+
+		&__header {
+			padding: 0 $padding-horizontal;
+			p {
+				font-size: 16px;
+			}
+		}
+
+		&__info {
+			padding: 0 $padding-horizontal 10px $padding-horizontal;
+
+			& > .form-field:first-child {
+				.form-field__label {
+					width: 25%;
+				}
+				.form-field__input {
+					width: 75%;
+				}
+			}
+		}
+
+		&__pay {
+			padding: 10px $padding-horizontal 0 $padding-horizontal;
+		}
+
+		&__footer {
+			display: flex;
+			padding: 0 $padding-horizontal;
+		}
+
+		hr {
+			background: $gray;
+			height: 1px;
+			border: none;
+		}
+
+	}
+
+	&__info {
+		$padding-vertical: 20px;
+		$padding-horizontal: 20px;
+		padding: $padding-vertical $padding-horizontal;
+		width: 100%;
+		max-width: 352px;
+		height: 280px;
+		margin-left: 30px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		border-radius: 4px;
+		background: url('https://react.semantic-ui.com/images/wireframe/image.png') 50% 50% no-repeat;
+		background-size: cover;
+
+		* {
+			color: $gray--text-inactive;
+		}
+
+		&__title {
+			margin: 0 0 5px 0;
+		}
+
+		&__address {
+			margin: 0 0 10px 0;
+		}
+
+		&__properties {
+			display: flex;
+			width: 100%;
+			align-self: center;
+
+			&__item {
+				flex-grow: 1;
+				text-align: center;
+				border: 1px solid $gray--text-inactive;
+				padding: 5px 5px;
+
+				p {
+					&:first-of-type {
+						margin-bottom: 0;
+						font-size: 12px;
+					}
+				}
+
+				&:first-child {
+					border-right: none;
+					border-top-left-radius: 4px;
+					border-bottom-left-radius: 4px;
+				}
+				&:last-child {
+					border-left: none;
+					border-top-right-radius: 4px;
+					border-bottom-right-radius: 4px;
+				}
+			}
+		}
+	}
+
+	&__text {
+		&--lighten {
+			color: #999999;
+		}
+
+		&--black {
+			color: rgb(13, 13, 13);
+		}
+	}
+
+	&__button {
+
+		&--px240 {
+			max-width: 240px !important;
+		}
+
+		&--centered {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+
+		&--orange {
+			background: $orange !important;
+			color: white !important;
+		}
+
+		&--fluid {
+			width: 100%;
+		}
+	}
+}
+
+.row {
+	display: flex;
+
+	&--inline {
+		display: inline-flex;
+	}
+
+	&--justify-space-between {
+		justify-content: space-between;
+	}
+
+	&--align-center {
+		align-items: center;
+	}
+
+	&--half-splitted {
+		justify-content: space-between !important;
+		& > * {
+			width: 49%;
+		}
+	}
+}
+
+.hover {
+	cursor: pointer;
+}
+
+.flat-container {
+	margin-bottom: 30px;
+}
+
+.modals {
+	.modal .container {
+		display: flex;
+		flex-direction: column;
+		& > * {
+			margin-bottom: 20px !important;
+			&:last-child {
+				margin-bottom: 0 !important;
+			}
+		}
+		.ui.input {
+			display: flex !important; 
+		}
+	}
+}
+
+.form-field {
+	display: flex;
+	align-items: center;
+	margin-bottom: 30px;
+
+	&__label {
+		box-sizing: border-box;
+		display: block;
+		width: 50%;
+		margin: 0;
+	}
+
+	&__input {
+		width: 50%;
+		min-width: 0 !important;
+	}
+
+	&--no-margin {
+		margin-bottom: 0;
+	}
+}
