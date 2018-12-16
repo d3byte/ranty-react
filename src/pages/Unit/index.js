@@ -107,7 +107,24 @@ export default class Unit extends Component {
 						</Container>
 					</Modal>
 				</main>
-				<aside></aside>
+				<aside className="unit__info">
+					<h2 className="unit__info__title">Прайм Эстейт</h2>
+					<p className="unit__info__address">Москва, ул. Пролетарская, 2</p>
+					<footer className="unit__info__properties">
+						<div className="unit__info__properties__item">
+							<p className="">Тип</p>
+							<p className="">Офис</p>
+						</div>
+						<div className="unit__info__properties__item">
+							<p className="">Площадь</p>
+							<p className="">134 м2</p>
+						</div>
+						<div className="unit__info__properties__item">
+							<p className="">Этаж</p>
+							<p className="">5</p>
+						</div>
+					</footer>
+				</aside>
 			</Layout>
 		)
 	}
