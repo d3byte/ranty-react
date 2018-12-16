@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './assets/style/main.scss';
 import 'semantic-ui-css/semantic.min.css';
 
-import { Management, CreateUnit, AddLead, AddRoom } from './pages';
+import { Management, CreateUnit, AddLead, AddRoom, Unit } from './pages';
 
 class App extends Component {
 	render() {
@@ -21,10 +21,13 @@ class App extends Component {
 						<CreateUnit {...props} names={['Управление', 'Создать объект']} />
 					)} />
 					<Route path="/management/add-lead" render={props => (
-						<AddLead {...props} names={['Управление', 'Создать объект']} />
+						<AddLead {...props} names={['Управление', 'Добавить лид']} />
 					)} />
 					<Route path="/management/add-room" render={props => (
-						<AddRoom {...props} names={['Управление', 'Создать объект']} />
+						<AddRoom {...props} names={['Управление', 'Добавить помещение']} />
+					)} />
+					<Route path="/management/unit" render={props => (
+						<Unit {...props} names={['Управление', 'Объект']} />
 					)} />
 				</>
 			</Router>
