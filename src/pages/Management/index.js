@@ -114,12 +114,11 @@ export default class Management extends Component {
 												item.status.vacant 
 													? (
 														<div className="row">
-															<div className="circle"></div>
+															<div className="circle circle--red"></div>
 															Вакантно
 														</div>
 													) : (
 														<div className="row">
-															<div className="circle circle--empty"></div>
 															{item.status.tenant}
 														</div>
 													)
