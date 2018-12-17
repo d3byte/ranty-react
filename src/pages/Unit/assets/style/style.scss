@@ -115,8 +115,8 @@
 		$padding-horizontal: 20px;
 		padding: $padding-vertical $padding-horizontal;
 		width: 100%;
-		max-width: 352px;
-		max-height: 280px;
+		width: 352px;
+		height: 280px;
 		margin-left: 30px;
 		display: flex;
 		flex-direction: column;
@@ -124,6 +124,7 @@
 		border-radius: 4px;
 		background: url('../img/thumbnail.png') 50% 50% no-repeat;
 		background-size: cover;
+		flex-shrink: 0;
 
 		* {
 			color: white;

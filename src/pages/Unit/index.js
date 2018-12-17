@@ -8,8 +8,11 @@ import attachment from './assets/img/attachment.svg';
 
 const panes = [
 	{ menuItem: 'Помещение' },
+	{ menuItem: 'Финансы' },
+	{ menuItem: 'ЖКУ' },
+	{ menuItem: 'Заявки' },
 	{ menuItem: 'Лиды' },
-  ]
+]
 
 export default class Unit extends Component {
 	state = {
@@ -50,7 +53,7 @@ export default class Unit extends Component {
 				<Tab onTabChange={this.onTabChange} panes={panes} />
 				<div className="wrapper">
 					<main className="unit__status">
-						{this.state.activePane === 0 ? (
+						{this.state.activePane === 0 && (
 							<React.Fragment>
 								<header className="unit__status__header"> 
 									<h3 className="unit__status__header__title">OOO "Икар Девелопмент"</h3>
@@ -130,7 +133,8 @@ export default class Unit extends Component {
 									</Container>
 								</Modal>
 							</React.Fragment>
-						) : (
+						)}
+						{this.state.activePane === 4 && (
 							<Table padded>
 								<Table.Header>
 									<Table.Row>
