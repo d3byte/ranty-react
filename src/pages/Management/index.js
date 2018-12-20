@@ -104,7 +104,7 @@ export default class Management extends Component {
 						<Table.Body>
 							{
 								TableRows.map((item, index) => (
-									<Table.Row key={index}>
+									<Table.Row key={index} onClick={e => this.props.history.push('/management/unit')}>
 										<Table.Cell>{item.unit}</Table.Cell>
 										<Table.Cell>{item.name}</Table.Cell>
 										<Table.Cell>{item.area}</Table.Cell>
