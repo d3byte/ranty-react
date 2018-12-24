@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Modal, Form, Input, Icon, Dropdown, Tab} from 'semantic-ui-react';
+import { Button, Modal, Form, Input, Icon, Dropdown, Tab, Table} from 'semantic-ui-react';
 import './assets/style/style.scss';
 
 import { Layout, Container } from '../../components';
@@ -226,6 +226,140 @@ export default class Edit extends Component {
 								</Modal>
 							</React.Fragment>
 						) : ''}
+						{this.state.activePane === 1 && (
+							<Table padded>
+								<Table.Header>
+									<Table.Row>
+										<Table.HeaderCell>ФИО/ Название организации</Table.HeaderCell>
+										<Table.HeaderCell>Телефон</Table.HeaderCell>
+										<Table.HeaderCell>Email</Table.HeaderCell>
+										<Table.HeaderCell></Table.HeaderCell>
+									</Table.Row>
+								</Table.Header>
+								<Table.Body>
+									<Table.Row>
+										<Table.Cell>ООО Dtotyrb</Table.Cell>
+										<Table.Cell>+7 999 999 99 99</Table.Cell>
+										<Table.Cell>rantrant@gmail.com</Table.Cell>
+										<Table.Cell singleLine>
+											<span onClick={e => this.collapse(0)}>
+												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
+											</span>
+										</Table.Cell>
+									</Table.Row>
+									{
+										this.state.isCollapsed === 0 && (
+											<Table.Row>
+												<Table.Cell colspan="4">
+													<main className="my-table">
+														<h4>Отправленные коммерческие предложения</h4>
+														<div className="my-table__row">
+															<p>1. 10:00</p>
+															<p>2019-02-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 11:34</p>
+															<p>2019-08-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 10:30</p>
+															<p>2019-15-09</p>
+															<p>на рассмотрении</p>
+															<p>посмотреть</p>
+														</div>
+
+													</main>
+												</Table.Cell>
+											</Table.Row>
+										)
+									}
+									<Table.Row>
+										<Table.Cell>ООО Dtotyrb</Table.Cell>
+										<Table.Cell>+7 999 999 99 99</Table.Cell>
+										<Table.Cell>rantrant@gmail.com</Table.Cell>
+										<Table.Cell singleLine>
+											<span onClick={e => this.collapse(1)}>
+												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
+											</span>
+										</Table.Cell>
+									</Table.Row>
+									{
+										this.state.isCollapsed === 1 && (
+											<Table.Row>
+												<Table.Cell colspan="4">
+													<main className="my-table">
+														<h4>Отправленные коммерческие предложения</h4>
+														<div className="my-table__row">
+															<p>1. 10:00</p>
+															<p>2019-02-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 11:34</p>
+															<p>2019-08-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 10:30</p>
+															<p>2019-15-09</p>
+															<p>на рассмотрении</p>
+															<p>посмотреть</p>
+														</div>
+
+													</main>
+												</Table.Cell>
+											</Table.Row>
+										)
+									}
+									<Table.Row>
+										<Table.Cell>ООО Dtotyrb</Table.Cell>
+										<Table.Cell>+7 999 999 99 99</Table.Cell>
+										<Table.Cell>rantrant@gmail.com</Table.Cell>
+										<Table.Cell singleLine>
+											<span onClick={e => this.collapse(2)}>
+												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
+											</span>
+										</Table.Cell>
+									</Table.Row>
+									{
+										this.state.isCollapsed === 2 && (
+											<Table.Row>
+												<Table.Cell colspan="4">
+													<main className="my-table">
+														<h4>Отправленные коммерческие предложения</h4>
+														<div className="my-table__row">
+															<p>1. 10:00</p>
+															<p>2019-02-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 11:34</p>
+															<p>2019-08-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 10:30</p>
+															<p>2019-15-09</p>
+															<p>на рассмотрении</p>
+															<p>посмотреть</p>
+														</div>
+
+													</main>
+												</Table.Cell>
+											</Table.Row>
+										)
+									}
+								</Table.Body>
+						</Table>
+						)}
 					</main>
 					<aside className="edit__info">
 						<h2 className="edit__info__title">ООО Плюс</h2>

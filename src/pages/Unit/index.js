@@ -269,7 +269,7 @@ export default class Unit extends Component {
 							</Table>
 						)}
 					</main>
-					<aside className="unit__info">
+					<aside className="unit__info" onClick={e => this.props.history.push('/management/edit')}>
 						<h2 className="unit__info__title">Прайм Эстейт</h2>
 						<p className="unit__info__address">Москва, ул. Пролетарская, 2</p>
 						<footer className="unit__info__properties">

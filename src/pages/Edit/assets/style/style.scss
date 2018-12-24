@@ -20,12 +20,19 @@
 		box-sizing: border-box;
 		border-radius: 4px;
 		padding: 10px;
+		
+		h4 {
+			margin-bottom: 20px;
+		}
+
 		&__row {
 			display: flex;
 			align-items: center;
+			margin-bottom: 10px;
 
 			p {
 				width: 25%;
+				margin: 0;
 
 				&:last-of-type {
 					text-align: right;
@@ -50,6 +57,16 @@
 		border-radius: 4px;
 		flex-grow: 1;
 		margin-bottom: 60px;
+
+		& > .ui.table {
+			padding: $padding-vertical $padding-horizontal;
+			border: none !important;
+
+			thead tr th {
+				border-bottom: none !important;
+				background: rgb(246, 246, 246) !important;
+			}
+		}
 
 		&__header {
 			padding: 0 $padding-horizontal;
