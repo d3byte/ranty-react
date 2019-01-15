@@ -26,7 +26,7 @@ class App extends Component {
 					<Route path="/management/add-room" render={props => (
 						<AddRoom {...props} names={['Управление', 'Добавить помещение']} />
 					)} />
-					<Route path="/management/unit" render={props => (
+					<Route path="/management/unit/:id" render={props => (
 						<Unit {...props} names={['Управление', 'Объект']} />
 					)} />
 					<Route path="/management/edit" render={props => (

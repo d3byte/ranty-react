@@ -18,7 +18,23 @@ export default class Unit extends Component {
 	state = {
 		isModalOpen: false,
 		name: '',
-		activePane: 0
+		activePane: 0,
+		room: {},
+		isLoading: true
+	}
+
+	async componentDidMount() {
+		const { id } = this.props.match.params
+		const res = await fetch(`http://46.229.212.225/api/rooms/${id}`, {
+			headers: {
+				'Accept': 'application/json',
+				'Content-type': 'application/json',
+				'Authorization': `Bearer 5jdwar0YdKGnSfTJKFNY7kUyL2wL9IpHnOpCL89FBc1U50Xxrk5FQNNjeAoD`,
+			}
+		})
+		var body = await res.json()
+		console.log(body)
+		this.setState({room: body, isLoading: false})
 	}
 
 	closeModal = () => {
@@ -43,6 +59,11 @@ export default class Unit extends Component {
 	}
 
 	render() {
+		const room = this.state.room
+		if (this.state.isLoading) {
+			return <p>Loading ...</p>;
+		}
+
 		return (
 			<Layout
 				className="unit"
@@ -270,20 +291,20 @@ export default class Unit extends Component {
 						)}
 					</main>
 					<aside className="unit__info" onClick={e => this.props.history.push('/management/edit')}>
-						<h2 className="unit__info__title">Прайм Эстейт</h2>
-						<p className="unit__info__address">Москва, ул. Пролетарская, 2</p>
+						<h2 className="unit__info__title">{room.title}</h2>
+						<p className="unit__info__address">{room.address}</p>
 						<footer className="unit__info__properties">
 							<div className="unit__info__properties__item">
 								<p className="">Тип</p>
-								<p className="">Офис</p>
+								<p className="">{room.type}</p>
 							</div>
 							<div className="unit__info__properties__item">
 								<p className="">Площадь</p>
-								<p className="">134 м2</p>
+								<p className="">{room.area} м2</p>
 							</div>
 							<div className="unit__info__properties__item">
 								<p className="">Этаж</p>
-								<p className="">5</p>
+								<p className="">null</p>
 							</div>
 						</footer>
 					</aside>

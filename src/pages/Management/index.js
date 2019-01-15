@@ -32,12 +32,27 @@ const TableRows = [
 	{ unit: 'Москва, ул. Пролетарская 2', name: 'Парк Горького', area: 371, type: 'Офис', status: { vacant: true, tenant: '' }, price: 21000 },
 ];
 
+
 export default class Management extends Component {
 	state = {
 		filter: {
 			status: '',
 			type: ''
 		},
+		rooms: {},
+		isLoading: true
+	}
+
+	async componentDidMount() {
+		const res = await fetch(`http://46.229.212.225/api/rooms`, {
+			headers: {
+				'Accept': 'application/json',
+				'Content-type': 'application/json',
+				'Authorization': `Bearer 5jdwar0YdKGnSfTJKFNY7kUyL2wL9IpHnOpCL89FBc1U50Xxrk5FQNNjeAoD`,
+			}
+		})
+		var body = await res.json()
+		this.setState({rooms: body, isLoading: false})
 	}
 
 	onFilterChange = (e, data, field) => {
@@ -50,6 +65,10 @@ export default class Management extends Component {
 	}
 
 	render() {
+		if (this.state.isLoading) {
+			return <p>Loading ...</p>;
+		}
+
 		return (
 			<Layout
 				pageName="Управление"
@@ -103,15 +122,15 @@ export default class Management extends Component {
 						</Table.Header>
 						<Table.Body>
 							{
-								TableRows.map((item, index) => (
-									<Table.Row key={index} onClick={e => this.props.history.push('/management/unit')}>
-										<Table.Cell>{item.unit}</Table.Cell>
-										<Table.Cell>{item.name}</Table.Cell>
+								this.state.rooms.map((item, index) => (
+									<Table.Row key={index} onClick={e => this.props.history.push(`/management/unit/${item.id}`)}>
+										<Table.Cell>{item.address}</Table.Cell>
+										<Table.Cell>{item.title}</Table.Cell>
 										<Table.Cell>{item.area}</Table.Cell>
 										<Table.Cell>{item.type}</Table.Cell>
 										<Table.Cell>
 											{
-												item.status.vacant 
+												item.available 
 													? (
 														<div className="row">
 															<div className="circle circle--red"></div>
@@ -124,7 +143,7 @@ export default class Management extends Component {
 													)
 											}
 										</Table.Cell>
-										<Table.Cell>{item.price}</Table.Cell>
+										<Table.Cell>{item.rent}</Table.Cell>
 									</Table.Row>
 								))
 							}
