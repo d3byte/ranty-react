@@ -59,7 +59,7 @@ export default class CreateCOModal extends Component {
         index,
         rentHolidays,
     } = this.state;
-    const { closeModal, open, dimmer } = this.props;
+    const { closeModal, open, dimmer, history } = this.props;
     const showPreferencesOptions = obespetPlatezh || payPeriod || peny || penalties || violation || notificationPeriod || subArenda || communPay || index || rentHolidays;
 
     return (
@@ -438,7 +438,7 @@ export default class CreateCOModal extends Component {
             <button className="ranty-modal__actions__button" onClick={closeModal}>
                 Отправить КП
             </button>
-            <button className="ranty-modal__actions__button ranty-modal__actions__button--gray" onClick={closeModal}>
+            <button className="ranty-modal__actions__button ranty-modal__actions__button--gray" onClick={history ? () => history.push('/management/preview-co') : closeModal}>
                 Посмотреть КП
             </button>
         </Modal.Actions>

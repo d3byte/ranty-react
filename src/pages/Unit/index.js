@@ -317,6 +317,7 @@ export default class Unit extends Component {
 					dimmer={this.state.dimmer}
 					open={this.state.open}
 					closeModal={this.closeCOModal}
+					history={this.props.history}
 				/>
 			</Layout>
 		)

@@ -380,6 +380,7 @@ export default class Edit extends Component {
 					dimmer={this.state.dimmer}
 					open={this.state.open}
 					closeModal={this.closeModal}
+					history={this.props.history}
 				/>
 			</Layout>
 		)
