@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Progress, Button, Modal, Input, Icon, Dropdown, Tab, Table} from 'semantic-ui-react';
 import './assets/style/style.scss';
 
-import { Layout, Container } from '../../components';
+import { Layout, Container, CreateCOModal } from '../../components';
 
 import attachment from './assets/img/attachment.svg';
 
@@ -20,8 +20,12 @@ export default class Unit extends Component {
 		name: '',
 		activePane: 0,
 		room: {},
-		isLoading: true
+		isLoading: true,
+		open: false
 	}
+
+	showCOModal = dimmer => () => this.setState({ dimmer, open: true })
+	closeCOModal = () => this.setState({ open: false })
 
 	async componentDidMount() {
 		const { id } = this.props.match.params
@@ -171,8 +175,8 @@ export default class Unit extends Component {
 										<Table.Cell>+7 999 999 99 99</Table.Cell>
 										<Table.Cell>rantrant@gmail.com</Table.Cell>
 										<Table.Cell singleLine>
-											<span onClick={e => this.collapse(0)}>
-												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
+											<span>
+												<span onClick={this.showCOModal('inverted')}><Icon name="clipboard outline" /> Создать КП</span> <Icon onClick={e => this.collapse(0)} name="dropdown" />
 											</span>
 										</Table.Cell>
 									</Table.Row>
@@ -211,8 +215,8 @@ export default class Unit extends Component {
 										<Table.Cell>+7 999 999 99 99</Table.Cell>
 										<Table.Cell>rantrant@gmail.com</Table.Cell>
 										<Table.Cell singleLine>
-											<span onClick={e => this.collapse(1)}>
-												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
+											<span>
+											<span onClick={this.showCOModal('inverted')}><Icon name="clipboard outline" /> Создать КП</span> <Icon onClick={e => this.collapse(0)} name="dropdown" />
 											</span>
 										</Table.Cell>
 									</Table.Row>
@@ -251,8 +255,8 @@ export default class Unit extends Component {
 										<Table.Cell>+7 999 999 99 99</Table.Cell>
 										<Table.Cell>rantrant@gmail.com</Table.Cell>
 										<Table.Cell singleLine>
-											<span onClick={e => this.collapse(2)}>
-												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
+											<span>
+											<span onClick={this.showCOModal('inverted')}><Icon name="clipboard outline" /> Создать КП</span> <Icon onClick={e => this.collapse(0)} name="dropdown" />
 											</span>
 										</Table.Cell>
 									</Table.Row>
@@ -309,6 +313,11 @@ export default class Unit extends Component {
 						</footer>
 					</aside>
 				</div>
+				<CreateCOModal
+					dimmer={this.state.dimmer}
+					open={this.state.open}
+					closeModal={this.closeCOModal}
+				/>
 			</Layout>
 		)
 	}
