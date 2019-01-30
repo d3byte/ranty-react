@@ -16,7 +16,8 @@ export default class Edit extends Component {
 		isModalOpen: false,
 		name: '',
 		activePane: 0,
-		tenants: {}
+		tenants: {},
+		isSaved: false,
 	}
 
 	async componentDidMount() {
@@ -61,6 +62,8 @@ export default class Edit extends Component {
 			return <p>Loading ...</p>;
 		}
 
+		const { isSaved } = this.state;
+
 		return (
 			<Layout
 				className="edit"
@@ -75,7 +78,9 @@ export default class Edit extends Component {
 							<React.Fragment>
 								<header className="edit__form__header row row--justify-space-between"> 
 									<p className="edit__text edit__text--lighten">Тип помещения: <span className="edit__text edit__text--black"><b>офис</b></span></p>
-									<p className="edit__text edit__text--lighten hover">редактировать <Icon name="ellipsis vertical" /></p>
+									{
+										isSaved && <p onClick={e => this.setState({ isSaved: false })} className="edit__text edit__text--lighten hover">редактировать <Icon name="ellipsis vertical" /></p>
+									}
 								</header>
 								<div className="edit__form__info">
 									<div className="form-field">
@@ -236,6 +241,15 @@ export default class Edit extends Component {
 										Добавить свидетельство о собственности
 									</Button>
 								</footer>
+								{
+									!isSaved && (
+										<footer className="edit__form__footer save-unit">
+											<Button onClick={e => this.setState({ isSaved: true })} contained className="create-unit__button">
+												Сохранить
+											</Button>
+										</footer>
+									)
+								}
 								<Modal size="mini" open={this.state.isModalOpen} onClose={this.closeModal}>
 									<Container dark title="Добавление вложения">
 										<Dropdown fluid placeholder='Договор аренды' selection options={[]} />
@@ -275,7 +289,7 @@ export default class Edit extends Component {
 						</Table>
 						)}
 					</main>
-					<aside className="edit__info">
+					<aside className="edit__info" onClick={e => this.props.history.push('/management/unit/2')}>
 						<h2 className="edit__info__title">ООО Плюс</h2>
 						<footer className="edit__info__properties">
 							<div className="edit__info__properties__item">

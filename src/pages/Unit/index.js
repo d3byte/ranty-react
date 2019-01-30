@@ -22,6 +22,7 @@ export default class Unit extends Component {
 		isLoading: true,
 		tenants: {},
 		lead: {},
+		dimmer: 'inverted',
 		open: false
 	}
 

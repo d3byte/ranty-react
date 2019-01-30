@@ -1,13 +1,15 @@
-@import "../../../../assets/style/abstracts/colors.scss";
-
 .preview-co {
-	$padding-vertical: 15px;
-	$padding-horizontal: 30px;
-	padding: $padding-vertical $padding-horizontal;
-	
+
+    .row--half-splitted > * {
+        width: 49% !important;
+    }
+
+    .form-field__label {
+        width: auto !important;
+    }
+
 	&__wrapper {
 		background: white;
-		padding: $padding-vertical $padding-horizontal;
 		border-radius: 4px;
 	}
 

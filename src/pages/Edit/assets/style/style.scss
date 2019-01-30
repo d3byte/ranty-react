@@ -297,9 +297,13 @@
 	}
 
 	&--obespet-platezh {
-		justify-content: space-between;
 		.form-field__label {
-			width: 29%;
+			width: 20%;
+			margin-right: 30px
+		}
+
+		.form-field__input {
+			width: 200px;
 		}
 
 		.inputs {
@@ -325,5 +329,15 @@
 				}
 			}
 		}
+	}
+
+}
+
+.save-unit {
+	margin-top: 30px;
+	justify-content: flex-start;
+
+	.create-unit__button {
+		background: $orange;
 	}
 }
