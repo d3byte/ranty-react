@@ -12,17 +12,36 @@ export default class AddLead extends Component {
 		unit: {},
 		date: '',
 		time: '',
-		remind: false
+		remind: false,
+		room: [],
+		isLoading: true
 	}
 
 	changeState = (property, value) => {
 		this.setState({ [property]: value });
 	}
 
+	async componentDidMount() {
+		const { id } = this.props.match.params
+		const res = await fetch(`http://46.229.212.225/api/rooms`, {
+			headers: {
+				'Accept': 'application/json',
+				'Content-type': 'application/json',
+				'Authorization': `Bearer 5jdwar0YdKGnSfTJKFNY7kUyL2wL9IpHnOpCL89FBc1U50Xxrk5FQNNjeAoD`,
+			}
+		})
+		var body = await res.json()
+		this.setState({room: body, isLoading: false})
+	}
+
 	submit = () => {
 	}
 
 	render() {
+		if (this.state.isLoading) {
+			return <p>Loading ...</p>;
+		}
+
 		return (
 			<Layout
 				pageName="Новый лид"
@@ -44,7 +63,7 @@ export default class AddLead extends Component {
 						</Form.Field>
 						<Form.Group inline>
 							<Form.Field>
-								<Dropdown fluid placeholder='Выбрать помещение' search selection options={[]} onChange={(e, { value }) => this.changeState('type', value)} />
+								<Dropdown fluid placeholder='Выбрать помещение' search selection options={this.state.room} onChange={(e, { id }) => this.changeState('type', id)} />
 							</Form.Field>
 							<Form.Field>
 								<Dropdown fluid placeholder='Выбрать дату' search selection options={[]} onChange={(e, { value }) => this.setRoomProperty('type', value)} />

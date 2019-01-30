@@ -20,7 +20,9 @@ export default class Unit extends Component {
 		activePane: 0,
 		room: {},
 		isLoading: true,
-		tenants: {}
+		tenants: {},
+		lead: {},
+		open: false
 	}
 
 	showCOModal = dimmer => () => this.setState({ dimmer, open: true })
@@ -47,7 +49,7 @@ export default class Unit extends Component {
 		var tenant = []
 		var tenants = await resTenants.json()
 		tenants.forEach(function(el) {
-			if (el.room_id == id) {
+			if (el.room_id == id && el.confirmed == 1) {
 				return tenant.push(el)
 			}
 		})
