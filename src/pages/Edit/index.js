@@ -15,7 +15,28 @@ export default class Edit extends Component {
 	state = {
 		isModalOpen: false,
 		name: '',
-		activePane: 0
+		activePane: 0,
+		tenants: {}
+	}
+
+	async componentDidMount() {
+		const { id } = this.props.match.params
+
+		const resTenants = await fetch(`http://46.229.212.225/api/tenants`, {
+			headers: {
+				'Accept': 'application/json',
+				'Content-type': 'application/json',
+				'Authorization': `Bearer 5jdwar0YdKGnSfTJKFNY7kUyL2wL9IpHnOpCL89FBc1U50Xxrk5FQNNjeAoD`,
+			}
+		})
+		var tenant = []
+		var tenants = await resTenants.json()
+		tenants.forEach(function(el) {
+			if (el.room_id === id) {
+				return tenant.push(el)
+			}
+		})
+		this.setState({isLoading: false, tenants: tenant})
 	}
 
 	closeModal = () => {
@@ -40,6 +61,10 @@ export default class Edit extends Component {
 	}
 
 	render() {
+		if (this.state.isLoading) {
+			return <p>Loading ...</p>;
+		}
+
 		return (
 			<Layout
 				className="edit"
@@ -237,126 +262,19 @@ export default class Edit extends Component {
 									</Table.Row>
 								</Table.Header>
 								<Table.Body>
-									<Table.Row>
-										<Table.Cell>ООО Dtotyrb</Table.Cell>
-										<Table.Cell>+7 999 999 99 99</Table.Cell>
-										<Table.Cell>rantrant@gmail.com</Table.Cell>
-										<Table.Cell singleLine>
-											<span onClick={e => this.collapse(0)}>
-												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
-											</span>
-										</Table.Cell>
-									</Table.Row>
-									{
-										this.state.isCollapsed === 0 && (
-											<Table.Row>
-												<Table.Cell colspan="4">
-													<main className="my-table">
-														<h4>Отправленные коммерческие предложения</h4>
-														<div className="my-table__row">
-															<p>1. 10:00</p>
-															<p>2019-02-09</p>
-															<p>отклонено</p>
-															<p>посмотреть</p>
-														</div>
-														<div className="my-table__row">
-															<p>1. 11:34</p>
-															<p>2019-08-09</p>
-															<p>отклонено</p>
-															<p>посмотреть</p>
-														</div>
-														<div className="my-table__row">
-															<p>1. 10:30</p>
-															<p>2019-15-09</p>
-															<p>на рассмотрении</p>
-															<p>посмотреть</p>
-														</div>
-
-													</main>
-												</Table.Cell>
-											</Table.Row>
-										)
-									}
-									<Table.Row>
-										<Table.Cell>ООО Dtotyrb</Table.Cell>
-										<Table.Cell>+7 999 999 99 99</Table.Cell>
-										<Table.Cell>rantrant@gmail.com</Table.Cell>
-										<Table.Cell singleLine>
-											<span onClick={e => this.collapse(1)}>
-												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
-											</span>
-										</Table.Cell>
-									</Table.Row>
-									{
-										this.state.isCollapsed === 1 && (
-											<Table.Row>
-												<Table.Cell colspan="4">
-													<main className="my-table">
-														<h4>Отправленные коммерческие предложения</h4>
-														<div className="my-table__row">
-															<p>1. 10:00</p>
-															<p>2019-02-09</p>
-															<p>отклонено</p>
-															<p>посмотреть</p>
-														</div>
-														<div className="my-table__row">
-															<p>1. 11:34</p>
-															<p>2019-08-09</p>
-															<p>отклонено</p>
-															<p>посмотреть</p>
-														</div>
-														<div className="my-table__row">
-															<p>1. 10:30</p>
-															<p>2019-15-09</p>
-															<p>на рассмотрении</p>
-															<p>посмотреть</p>
-														</div>
-
-													</main>
-												</Table.Cell>
-											</Table.Row>
-										)
-									}
-									<Table.Row>
-										<Table.Cell>ООО Dtotyrb</Table.Cell>
-										<Table.Cell>+7 999 999 99 99</Table.Cell>
-										<Table.Cell>rantrant@gmail.com</Table.Cell>
-										<Table.Cell singleLine>
-											<span onClick={e => this.collapse(2)}>
-												<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
-											</span>
-										</Table.Cell>
-									</Table.Row>
-									{
-										this.state.isCollapsed === 2 && (
-											<Table.Row>
-												<Table.Cell colspan="4">
-													<main className="my-table">
-														<h4>Отправленные коммерческие предложения</h4>
-														<div className="my-table__row">
-															<p>1. 10:00</p>
-															<p>2019-02-09</p>
-															<p>отклонено</p>
-															<p>посмотреть</p>
-														</div>
-														<div className="my-table__row">
-															<p>1. 11:34</p>
-															<p>2019-08-09</p>
-															<p>отклонено</p>
-															<p>посмотреть</p>
-														</div>
-														<div className="my-table__row">
-															<p>1. 10:30</p>
-															<p>2019-15-09</p>
-															<p>на рассмотрении</p>
-															<p>посмотреть</p>
-														</div>
-
-													</main>
-												</Table.Cell>
-											</Table.Row>
-										)
-									}
+								{
+									this.state.tenants.map((item) => (
+										<Table.Row>
+											<Table.Cell>{item.firstname} {item.lastname}</Table.Cell>
+											<Table.Cell>{item.phone}</Table.Cell>
+											<Table.Cell>{item.email}</Table.Cell>
+											<Table.Cell singleLine>
+												<span onClick={e => this.collapse(0)}>
+													<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
+												</span>
+											</Table.Cell>
+										</Table.Row>
+									))}
 								</Table.Body>
 						</Table>
 						)}
