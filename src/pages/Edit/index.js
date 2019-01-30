@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Button, Modal, Form, Input, Icon, Dropdown, Tab, Table} from 'semantic-ui-react';
+import { Button, Checkbox, Modal, Input, Icon, Dropdown, Divider, Tab, Table} from 'semantic-ui-react';
 import './assets/style/style.scss';
 
-import { Layout, Container } from '../../components';
+import { Layout, Container, CreateCOModal } from '../../components';
 
 import attachment from './assets/img/attachment.svg';
 
@@ -39,13 +39,9 @@ export default class Edit extends Component {
 		this.setState({isLoading: false, tenants: tenant})
 	}
 
-	closeModal = () => {
-		this.setState({ isModalOpen: false });
-	}
+	showModal = dimmer => () => this.setState({ dimmer, open: true })
 
-	openModal = () => {
-		this.setState({ isModalOpen: true });
-	}
+    closeModal = () => this.setState({ open: false })
 
 	onTabChange = (e, data) => {
 		this.setState({ activePane: data.activeIndex });
@@ -59,7 +55,7 @@ export default class Edit extends Component {
 		}
 		this.setState({ isCollapsed: id });
 	}
-
+	
 	render() {
 		if (this.state.isLoading) {
 			return <p>Loading ...</p>;
@@ -297,6 +293,13 @@ export default class Edit extends Component {
 						</footer>
 					</aside>
 				</div>
+
+				<CreateCOModal
+					dimmer={this.state.dimmer}
+					open={this.state.open}
+					closeModal={this.closeModal}
+					history={this.props.history}
+				/>
 			</Layout>
 		)
 	}

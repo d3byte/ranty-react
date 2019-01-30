@@ -1,0 +1,48 @@
+@import "../../../../assets/style/abstracts/colors.scss";
+
+.preview-co {
+	$padding-vertical: 15px;
+	$padding-horizontal: 30px;
+	padding: $padding-vertical $padding-horizontal;
+	
+	&__wrapper {
+		background: white;
+		padding: $padding-vertical $padding-horizontal;
+		border-radius: 4px;
+	}
+
+	&__sub-title {
+		margin-bottom: 30px;
+	}
+
+	.form-field {
+		margin-bottom: 14px;
+	}
+
+	.reasons {
+		margin-bottom: 14px;
+		.form-field {
+			margin-bottom: 7px !important;
+		}
+
+		&__item {
+			font-size: 12px;
+		}
+	}
+
+	.penalties {
+		margin-bottom: 14px;
+		& > .form-field {
+			margin-bottom: 7px !important;
+		}
+		.row {
+			.form-field {
+				&:last-child {
+					.form-field__label {
+						font-size: 16px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Progress, Button, Modal, Input, Icon, Dropdown, Tab, Table} from 'semantic-ui-react';
 import './assets/style/style.scss';
 
-import { Layout, Container } from '../../components';
+import { Layout, Container, CreateCOModal } from '../../components';
 
 import attachment from './assets/img/attachment.svg';
 
@@ -22,6 +22,9 @@ export default class Unit extends Component {
 		isLoading: true,
 		tenants: {}
 	}
+
+	showCOModal = dimmer => () => this.setState({ dimmer, open: true })
+	closeCOModal = () => this.setState({ open: false })
 
 	async componentDidMount() {
 		const { id } = this.props.match.params
@@ -247,6 +250,12 @@ export default class Unit extends Component {
 						</footer>
 					</aside>
 				</div>
+				<CreateCOModal
+					dimmer={this.state.dimmer}
+					open={this.state.open}
+					closeModal={this.closeCOModal}
+					history={this.props.history}
+				/>
 			</Layout>
 		)
 	}

@@ -4,7 +4,8 @@ import AddLead from './AddLead';
 import AddRoom from './AddRoom';
 import Unit from './Unit';
 import Edit from './Edit';
+import PreviewCO from './PreviewCO';
 
 export {
-	Management, CreateUnit, AddLead, AddRoom, Unit, Edit
+	Management, CreateUnit, AddLead, AddRoom, Unit, Edit, PreviewCO
 };
