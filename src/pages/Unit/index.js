@@ -186,49 +186,125 @@ export default class Unit extends Component {
 									</Table.Row>
 								</Table.Header>
 								<Table.Body>
+								<Table.Row>
+										<Table.Cell>ООО Dtotyrb</Table.Cell>
+										<Table.Cell>+7 999 999 99 99</Table.Cell>
+										<Table.Cell>rantrant@gmail.com</Table.Cell>
+										<Table.Cell singleLine>
+											<span>
+												<span onClick={this.showCOModal('inverted')}><Icon name="clipboard outline" /> Создать КП</span> <Icon onClick={e => this.collapse(0)} name="dropdown" />
+											</span>
+										</Table.Cell>
+									</Table.Row>
 									{
-										this.state.tenants.map((item) => (
+										this.state.isCollapsed === 0 && (
 											<Table.Row>
-												<Table.Cell>{item.firstname} {item.lastname}</Table.Cell>
-												<Table.Cell>{item.phone}</Table.Cell>
-												<Table.Cell>{item.email}</Table.Cell>
-												<Table.Cell singleLine>
-													<span onClick={e => this.collapse(0)}>
-														<Icon name="clipboard outline" /> Создать КП <Icon name="dropdown" />
-													</span>
+												<Table.Cell colspan="4">
+													<main className="my-table">
+														<h4>Отправленные коммерческие предложения</h4>
+														<div className="my-table__row">
+															<p>1. 10:00</p>
+															<p>2019-02-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 11:34</p>
+															<p>2019-08-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 10:30</p>
+															<p>2019-15-09</p>
+															<p>на рассмотрении</p>
+															<p>посмотреть</p>
+														</div>
+
+													</main>
 												</Table.Cell>
 											</Table.Row>
-											// {
-											// 	this.state.isCollapsed === 0 && (
-											// 		<Table.Row>
-											// 			<Table.Cell colspan="4">
-											// 				<main className="my-table">
-											// 					<h4>Отправленные коммерческие предложения</h4>
-											// 					<div className="my-table__row">
-											// 						<p>1. 10:00</p>
-											// 						<p>2019-02-09</p>
-											// 						<p>отклонено</p>
-											// 						<p>посмотреть</p>
-											// 					</div>
-											// 					<div className="my-table__row">
-											// 						<p>1. 11:34</p>
-											// 						<p>2019-08-09</p>
-											// 						<p>отклонено</p>
-											// 						<p>посмотреть</p>
-											// 					</div>
-											// 					<div className="my-table__row">
-											// 						<p>1. 10:30</p>
-											// 						<p>2019-15-09</p>
-											// 						<p>на рассмотрении</p>
-											// 						<p>посмотреть</p>
-											// 					</div>
+										)
+									}
+									<Table.Row>
+										<Table.Cell>ООО Dtotyrb</Table.Cell>
+										<Table.Cell>+7 999 999 99 99</Table.Cell>
+										<Table.Cell>rantrant@gmail.com</Table.Cell>
+										<Table.Cell singleLine>
+											<span>
+											<span onClick={this.showCOModal('inverted')}><Icon name="clipboard outline" /> Создать КП</span> <Icon onClick={e => this.collapse(0)} name="dropdown" />
+											</span>
+										</Table.Cell>
+									</Table.Row>
+									{
+										this.state.isCollapsed === 1 && (
+											<Table.Row>
+												<Table.Cell colspan="4">
+													<main className="my-table">
+														<h4>Отправленные коммерческие предложения</h4>
+														<div className="my-table__row">
+															<p>1. 10:00</p>
+															<p>2019-02-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 11:34</p>
+															<p>2019-08-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 10:30</p>
+															<p>2019-15-09</p>
+															<p>на рассмотрении</p>
+															<p>посмотреть</p>
+														</div>
 
-											// 				</main>
-											// 			</Table.Cell>
-											// 		</Table.Row>
-											// 	)
-											// }
-										))
+													</main>
+												</Table.Cell>
+											</Table.Row>
+										)
+									}
+									<Table.Row>
+										<Table.Cell>ООО Dtotyrb</Table.Cell>
+										<Table.Cell>+7 999 999 99 99</Table.Cell>
+										<Table.Cell>rantrant@gmail.com</Table.Cell>
+										<Table.Cell singleLine>
+											<span>
+											<span onClick={this.showCOModal('inverted')}><Icon name="clipboard outline" /> Создать КП</span> <Icon onClick={e => this.collapse(0)} name="dropdown" />
+											</span>
+										</Table.Cell>
+									</Table.Row>
+									{
+										this.state.isCollapsed === 2 && (
+											<Table.Row>
+												<Table.Cell colspan="4">
+													<main className="my-table">
+														<h4>Отправленные коммерческие предложения</h4>
+														<div className="my-table__row">
+															<p>1. 10:00</p>
+															<p>2019-02-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 11:34</p>
+															<p>2019-08-09</p>
+															<p>отклонено</p>
+															<p>посмотреть</p>
+														</div>
+														<div className="my-table__row">
+															<p>1. 10:30</p>
+															<p>2019-15-09</p>
+															<p>на рассмотрении</p>
+															<p>посмотреть</p>
+														</div>
+
+													</main>
+												</Table.Cell>
+											</Table.Row>
+										)
 									}
 								</Table.Body>
 							</Table>
